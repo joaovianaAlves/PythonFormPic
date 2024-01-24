@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Turma</th>
+          <th>PIC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through the list of students -->
+        {% for aluno in alunos %}
+        <tr>
+          <td>{{ aluno.id_aluno }}</td>
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.turma }}</td>
+          <td>{{ aluno.pic }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" name="delete_all">Excluir todos os alunos</button>
+    </form>
+  </body>
+</html>
